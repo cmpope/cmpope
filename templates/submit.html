@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+
+<h1>{{name}}</h1>
+
+<form method="POST" action="/submit">
+    <!-- {{ form.hidden_tag() }} -->
+    {{ form.csrf_token }}
+    {{ form.name.label }} {{ form.name(size=20) }}
+    <input type="submit" value="Go">
+</form>
+{% endblock %}

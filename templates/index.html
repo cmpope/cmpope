@@ -1,6 +1,30 @@
 {% extends "base.html" %}
 
+
   {% block page_title %}Chris Pope's Website - cmpope.com{% endblock %}
 
+  {% block content %}
+  <div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ message }}
+    </div>
+    {% endfor %}
+
+  {% block page_content %}
+    <div class="page-header">
+      <h1>Hello, {% if name %} {{name}} {% else %} Stranger {% endif %}</h1>
+    </div>
+    <!-- {# {{ wtf.quick_form(form) }} #} -->
+    <form method="POST" action="/">
+      {{ form.csrf_token }}
+      {{ form.name.label }} {{ form.name() }}
+      {{ form.submit() }}
+    </form>
+  {% endblock %}
+
+</div>
+{% endblock %}
 
 
